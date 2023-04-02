@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/dummy_data.dart';
 import 'package:flutter_meal_app/models/category.dart';
+import 'package:flutter_meal_app/shared/components.dart';
 import 'package:flutter_meal_app/widgets/category_item.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -8,17 +9,24 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView(
-      padding: const EdgeInsets.all(25),
-      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-        maxCrossAxisExtent: 200,
-        childAspectRatio: 3/2,
-        crossAxisSpacing: 20,
-        mainAxisSpacing: 20
+    return Scaffold(
+      appBar: AppBar(
+        title: myText('Categories'),
       ),
-      children: DUMMY_CATEGORIES.map((CategoryModel catData)
-        => CategoryItem(item: catData,),
-      ).toList(),
+      body: SafeArea(
+        child: GridView(
+          padding: const EdgeInsets.all(25),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
+            childAspectRatio: 3/2,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20
+          ),
+          children: DUMMY_CATEGORIES.map((CategoryModel catData)
+            => CategoryItem(item: catData,),
+          ).toList(),
+        ),
+      ),
     );
   }
 }

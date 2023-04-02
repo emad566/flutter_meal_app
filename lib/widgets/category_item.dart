@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/models/category.dart';
+import 'package:flutter_meal_app/screens/meal_screen.dart';
 import 'package:flutter_meal_app/shared/components.dart';
 
 // ignore: must_be_immutable
@@ -11,7 +12,11 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      splashColor: Colors.white,
+      borderRadius: BorderRadius.circular(12.0),
+      onTap: (){
+        navigateTo(context, CategoryMealScreen(catItem: item));
+      },
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12.0),

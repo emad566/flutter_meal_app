@@ -14,27 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Meal App',
       theme: lightTheme,
-      home:  MyHomePage(title: 'Flutter Demo Home Page'),
+      home:  const CategoryScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
 
-class _MyHomePageState extends State<MyHomePage> {
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: const CategoryScreen(),// This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
