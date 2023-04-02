@@ -17,20 +17,22 @@ class Meal{
   final List<String> categories;
   final String title;
   final List<String> ingredients;
-  final String steps;
-  final String duration;
+  final String imageUrl;
+  final List<String> steps;
+  final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final String isGlutenFree;
-  final String isLactoseFree;
-  final String isVegan;
-  final String isVegetarian;
+  final bool isGlutenFree;
+  final bool isLactoseFree;
+  final bool isVegan;
+  final bool isVegetarian;
 
   Meal({
     @required this.id,
     @required this.categories,
     @required this.title,
     @required this.ingredients,
+    @required this.imageUrl,
     @required this.steps,
     @required this.duration,
     @required this.complexity,

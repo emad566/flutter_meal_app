@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meal_app/screens/category_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: null,// This trailing comma makes auto-formatting nicer for build methods.
+      body: const CategoryScreen(),// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
