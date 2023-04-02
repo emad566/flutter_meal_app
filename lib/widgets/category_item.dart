@@ -18,7 +18,7 @@ class CategoryItem extends StatelessWidget {
           color: item.color,
         ),
         padding: const EdgeInsets.all(10.0),
-        child: myText(item.title, style: const TextStyle(color: Colors.white)),
+        child: myText(item.title, style: Theme.of(context).textTheme.bodySmall),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/screens/category_screen.dart';
+import 'package:flutter_meal_app/shared/theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +11,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Flutter Meal App',
+      theme: lightTheme,
       home:  MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
