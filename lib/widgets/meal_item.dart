@@ -10,6 +10,9 @@ class MealItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData queryData;
+    queryData = MediaQuery.of(context);
+
     return InkWell(
       onTap: (){
 
@@ -21,7 +24,6 @@ class MealItem extends StatelessWidget {
         elevation: 15,
         child: Column(
           children: [
-            myText(item.title),
             Stack(
               children: [
                 ClipRRect(
@@ -29,8 +31,23 @@ class MealItem extends StatelessWidget {
                     topLeft: Radius.circular(15),
                     topRight: Radius.circular(15),
                   ),
-                  child: Image.network(item.imageUrl, width: double.infinity, height: 200, fit: BoxFit.fill,),
+                  child: Image.network(
+                    item.imageUrl,
+                    width: double.infinity,
+                    height: 200,
+                    fit: BoxFit.fill,
+                  ),
                 ),
+                Positioned(
+                  child: Container(
+                    width: queryData.size.width -40,
+                    padding: EdgeInsets.all(20),
+                    color: Colors.black.withOpacity(.5),
+                    child: myText(item.title, style: TextStyle(color: Colors.white)),
+                  ),
+                  bottom: 20,
+                  left: 20,
+                )
               ],
             )
           ],
