@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/models/meal.dart';
+import 'package:flutter_meal_app/screens/meal_detail_screen.dart';
 import 'package:flutter_meal_app/shared/components.dart';
 
 // ignore: must_be_immutable
@@ -32,7 +33,7 @@ class MealItem extends StatelessWidget {
 
     return InkWell(
       onTap: (){
-
+        navigateTo(context, MealDetailsScreen(item: item));
       },
       child: Card(
         shape: RoundedRectangleBorder(
