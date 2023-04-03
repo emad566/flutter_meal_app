@@ -3,8 +3,9 @@ import 'package:flutter_meal_app/screens/filter_screen.dart';
 import 'package:flutter_meal_app/screens/tabs_screen.dart';
 import 'package:flutter_meal_app/shared/components.dart';
 
+// ignore: must_be_immutable
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({Key key}) : super(key: key);
+  const AppDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,7 @@ class AppDrawer extends StatelessWidget {
             height: 120,
             width: double.infinity,
             alignment: Alignment.centerLeft,
-            color: Theme.of(context).textTheme.titleSmall.color,
+            color: Theme.of(context).textTheme.titleSmall?.color,
             padding: const EdgeInsets.all(20.0),
             child: Text(
               'Cocking Up!',
@@ -46,7 +47,7 @@ class AppDrawer extends StatelessWidget {
   }
 
   ListTile buildDrawerItem(BuildContext context,
-      {@required String title, @required IconData icon, Widget screen}) {
+      {required String title, required IconData icon, Widget? screen}) {
     return ListTile(
       leading: Icon(icon, size: 30,),
       title: myText(title),

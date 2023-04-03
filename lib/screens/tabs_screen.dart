@@ -5,7 +5,7 @@ import 'package:flutter_meal_app/shared/components.dart';
 import 'package:flutter_meal_app/widgets/app_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
-  const TabsScreen({Key key}) : super(key: key);
+  const TabsScreen({Key? key}) : super(key: key);
 
   @override
   State<TabsScreen> createState() => _TabsScreenState();
@@ -13,7 +13,7 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   int currentTabIndex = 0;
-  List<Map<String, Object>> screens = [
+  List<Map<String, dynamic>> screens = [
     {
       'screen': const CategoryScreen(),
       'title': 'Categories',
@@ -23,6 +23,7 @@ class _TabsScreenState extends State<TabsScreen> {
       'title': 'Favorites',
     },
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +52,7 @@ class _TabsScreenState extends State<TabsScreen> {
         currentIndex: currentTabIndex,
         backgroundColor: Theme.of(context).primaryColor,
         unselectedItemColor: Theme.of(context).canvasColor,
-        selectedItemColor: Theme.of(context).textTheme.titleSmall.color,
+        selectedItemColor: Theme.of(context).textTheme.titleSmall?.color,
       ),
     );
   }

@@ -6,7 +6,7 @@ import 'package:flutter_meal_app/shared/components.dart';
 // ignore: must_be_immutable
 class CategoryItem extends StatelessWidget {
   final CategoryModel item;
-  const CategoryItem({Key key, this.item}) : super(key: key);
+  const CategoryItem({Key? key, required this.item}) : super(key: key);
 
 
   @override

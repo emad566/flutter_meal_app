@@ -5,5 +5,5 @@ class CategoryModel{
   final String title;
   final Color color;
 
-  CategoryModel({@required this.id, @required this.title, this.color = Colors.orange});
+  CategoryModel({required this.id, required this.title, this.color = Colors.orange});
 }

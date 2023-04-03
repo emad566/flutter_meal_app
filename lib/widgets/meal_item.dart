@@ -7,23 +7,23 @@ import 'package:flutter_meal_app/shared/components.dart';
 class MealItem extends StatelessWidget {
   Meal item;
   final Function removeItem;
-  MealItem({Key key, @required this.item, @required this.removeItem}) : super(key: key);
+  MealItem({Key? key, required this.item, required this.removeItem}) : super(key: key);
 
   String get complexityText{
     switch(item.complexity){
-      case Complexity.simple: return 'Simple'; break;
-      case Complexity.challenging: return 'Challenging'; break;
-      case Complexity.hard: return 'Hard'; break;
-      default: return 'Unknown'; break;
+      case Complexity.simple: return 'Simple';
+      case Complexity.challenging: return 'Challenging';
+      case Complexity.hard: return 'Hard';
+      default: return 'Unknown';
     }
   }
 
   String get affordability{
     switch(item.affordability){
-      case Affordability.affordable: return 'Affordable'; break;
-      case Affordability.luxurious: return 'Luxurious'; break;
-      case Affordability.pricey: return 'Pricey'; break;
-      default: return 'Unknown'; break;
+      case Affordability.affordable: return 'Affordable';
+      case Affordability.luxurious: return 'Luxurious';
+      case Affordability.pricey: return 'Pricey';
+      default: return 'Unknown';
     }
   }
 

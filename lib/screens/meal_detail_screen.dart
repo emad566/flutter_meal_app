@@ -4,7 +4,7 @@ import 'package:flutter_meal_app/shared/components.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   final Meal item;
-  const MealDetailsScreen({Key key, @required this.item}) : super(key: key);
+  const MealDetailsScreen({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

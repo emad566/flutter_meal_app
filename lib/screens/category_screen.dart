@@ -4,7 +4,7 @@ import 'package:flutter_meal_app/models/category.dart';
 import 'package:flutter_meal_app/widgets/category_item.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({Key key}) : super(key: key);
+  const CategoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

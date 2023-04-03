@@ -9,7 +9,7 @@ import 'package:flutter_meal_app/widgets/meal_item.dart';
 class CategoryMealScreen extends StatefulWidget {
   CategoryModel catItem;
   List<Meal> meals = [];
-  CategoryMealScreen({Key key, @required this.catItem}) : super(key: key);
+  CategoryMealScreen({Key? key, required this.catItem}) : super(key: key);
 
   @override
   State<CategoryMealScreen> createState() => _CategoryMealScreenState();

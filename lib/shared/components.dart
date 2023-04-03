@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget myText(String text, {TextStyle style}){
+Widget myText(String text, {TextStyle? style}){
   return Text(
     text, style: style?? const TextStyle(fontSize: 26),
   );

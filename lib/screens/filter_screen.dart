@@ -1,26 +1,45 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_meal_app/shared/cache_helper.dart';
 import 'package:flutter_meal_app/shared/components.dart';
 import 'package:flutter_meal_app/widgets/app_drawer.dart';
 
+// ignore: must_be_immutable
 class FilterScreen extends StatefulWidget {
-
-  const FilterScreen({Key key}) : super(key: key);
+  const FilterScreen({Key? key}) : super(key: key);
 
   @override
   State<FilterScreen> createState() => _FilterScreenState();
 }
 
 class _FilterScreenState extends State<FilterScreen> {
-  bool isGluten = false;
+  late Map<String, dynamic>? filters;
 
-  bool isLactose = false;
+  @override
+  void initState() {
+    super.initState();
 
-  bool isVegetarian = false;
+    if(CacheHelper.getData('filters') == null){
+      filters = {
+        'gluten': false,
+        'lactose': false,
+        'vegetarian': false,
+        'vegan': false,
+      };
+      cacheData();
+    }else{
+      filters = jsonDecode(CacheHelper.getData('filters'));
+    }
+  }
 
-  bool isVegan = false;
+  void cacheData(){
+    CacheHelper.setData('filters', jsonEncode(filters!));
+  }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: myText('Filter'),
@@ -38,10 +57,11 @@ class _FilterScreenState extends State<FilterScreen> {
                 context,
                 title: 'Gluten',
                 subtitle: 'Only includes Gluten meal',
-                value: isGluten,
+                value: filters!['gluten']!,
                 onChange: (){
                  setState(() {
-                   isGluten = !isGluten;
+                   filters!['gluten'] = !filters!['gluten']!;
+                   cacheData();
                  });
                 },
               ),
@@ -49,10 +69,11 @@ class _FilterScreenState extends State<FilterScreen> {
                 context,
                 title: 'Lactose',
                 subtitle: 'Only includes Lactose meal',
-                value: isLactose,
+                value: filters!['lactose']!,
                 onChange: (){
                  setState(() {
-                   isLactose = !isLactose;
+                   filters!['lactose'] = !filters!['lactose']!;
+                   cacheData();
                  });
                 },
               ),
@@ -60,10 +81,11 @@ class _FilterScreenState extends State<FilterScreen> {
                 context,
                 title: 'Vegetarian',
                 subtitle: 'Only includes Vegetarian meal',
-                value: isVegetarian,
+                value: filters!['vegetarian']!,
                 onChange: (){
                  setState(() {
-                   isVegetarian = !isVegetarian;
+                   filters!['vegetarian'] = !filters!['vegetarian']!;
+                   cacheData();
                  });
                 },
               ),
@@ -71,10 +93,11 @@ class _FilterScreenState extends State<FilterScreen> {
                 context,
                 title: 'Vegan',
                 subtitle: 'Only includes Vegan meal',
-                value: isVegan,
+                value: filters!['vegan']!,
                 onChange: (){
                  setState(() {
-                   isVegan = !isVegan;
+                   filters!['vegan'] = !filters!['vegan']!;
+                   cacheData();
                  });
                 },
               ),
@@ -85,13 +108,13 @@ class _FilterScreenState extends State<FilterScreen> {
     );
   }
 
-  SwitchListTile buildSwitchListTile(BuildContext context, {@required title, @required subtitle, @required bool value, @required Function onChange }) {
+  SwitchListTile buildSwitchListTile(BuildContext context, {required title, required subtitle, required bool value, required Function onChange }) {
     return SwitchListTile(
       value: value,
       onChanged: (_){onChange();},
       title: myText(title),
       subtitle: Text(subtitle, style: TextStyle(color:Theme.of(context).primaryColor),),
-      activeColor: Theme.of(context).textTheme.titleSmall.color,
+      activeColor: Theme.of(context).textTheme.titleSmall?.color,
 
     );
   }
