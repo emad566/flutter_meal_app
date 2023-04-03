@@ -22,10 +22,10 @@ class _FilterScreenState extends State<FilterScreen> {
 
     if(CacheHelper.getData('filters') == null){
       filters = {
-        'gluten': false,
-        'lactose': false,
-        'vegetarian': false,
-        'vegan': false,
+        'gluten': true,
+        'lactose': true,
+        'vegetarian': true,
+        'vegan': true,
       };
       cacheData();
     }else{

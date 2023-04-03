@@ -7,6 +7,7 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
 
+
   runApp(const MyApp());
 }
 
