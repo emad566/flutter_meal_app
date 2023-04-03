@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.pink,
-  canvasColor: const Color.fromRGBO(255, 254, 229, 1),
+  canvasColor: Colors.white,
+  accentColor: Colors.amber,
   textTheme: ThemeData.light().textTheme.copyWith(
     bodySmall: const TextStyle(
       color: Color.fromRGBO(255, 254, 229, 1),
