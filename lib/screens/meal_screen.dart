@@ -44,9 +44,10 @@ class _CategoryMealScreenState extends State<CategoryMealScreen> {
     }
   }
 
-  void removeItem(Meal meal){
+  void removeItem(Meal? meal){
+    if(meal == null) return;
     setState(() {
-      widget.meals.removeWhere((Meal m) => meal.id == m.id);
+      widget.meals.removeWhere((Meal m) => meal!.id == m.id);
     });
   }
 

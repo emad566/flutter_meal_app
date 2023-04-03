@@ -1,11 +1,34 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/models/meal.dart';
+import 'package:flutter_meal_app/shared/cache_helper.dart';
 import 'package:flutter_meal_app/shared/components.dart';
 
-class MealDetailsScreen extends StatelessWidget {
+class MealDetailsScreen extends StatefulWidget {
   final Meal item;
   const MealDetailsScreen({Key? key, required this.item}) : super(key: key);
 
+  @override
+  State<MealDetailsScreen> createState() => _MealDetailsScreenState();
+}
+
+class _MealDetailsScreenState extends State<MealDetailsScreen> {
+  List<dynamic> favMealIds = [];
+  @override
+  void initState() {
+    super.initState();
+    if(CacheHelper.getData('favMealIds') != null){
+      favMealIds = jsonDecode(CacheHelper.getData('favMealIds'));
+    }
+  }
+
+  void toggleFavMealIds(){
+    setState(() {
+      (favMealIds.contains(widget.item.id))? favMealIds.remove(widget.item.id) : favMealIds.add(widget.item.id);
+      CacheHelper.setData('favMealIds', jsonEncode(favMealIds));
+    });
+  }
   @override
   Widget build(BuildContext context) {
     MediaQueryData queryData;
@@ -13,12 +36,25 @@ class MealDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: myText(item.title),
+        title: myText(widget.item.title),
+        actions: [
+          IconButton(
+            onPressed: (){
+              toggleFavMealIds();
+            },
+            icon: Icon(
+              Icons.star,
+              color: favMealIds.contains(widget.item.id) ?
+                  Theme.of(context).textTheme.titleSmall?.color
+                  : Theme.of(context).canvasColor,
+            ),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.delete),
         onPressed: (){
-          Navigator.of(context).pop(item);
+          Navigator.of(context).pop(widget.item);
         },
       ),
       body: SingleChildScrollView(
@@ -28,7 +64,7 @@ class MealDetailsScreen extends StatelessWidget {
               height: 300,
               width: double.infinity,
               child: Image.network(
-                item.imageUrl,
+                widget.item.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,9 +82,9 @@ class MealDetailsScreen extends StatelessWidget {
               height: 200,
               width: queryData.size.width * .9,
               child: ListView.builder(
-                itemCount: item.steps.length,
+                itemCount: widget.item.steps.length,
                 itemBuilder: (BuildContext context, int index) {
-                  String step = item.steps[index];
+                  String step = widget.item.steps[index];
                   return ListTile(
                     leading: CircleAvatar(
                       child: Text('# ${index+1}'),
@@ -78,9 +114,9 @@ class MealDetailsScreen extends StatelessWidget {
       height: 200,
       width: queryData.size.width * .9,
       child: ListView.builder(
-        itemCount: item.ingredients.length,
+        itemCount: widget.item.ingredients.length,
         itemBuilder: (BuildContext context, int index) {
-          String ingredient = item.ingredients[index];
+          String ingredient = widget.item.ingredients[index];
           return Card(
             color: Theme.of(context).primaryColor,
             child: Padding(

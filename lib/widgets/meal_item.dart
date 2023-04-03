@@ -39,7 +39,6 @@ class MealItem extends StatelessWidget {
             return MealDetailsScreen(item: item);
           }),
         ).then((value){
-          if(value == null) return;
           removeItem(value);
         });
 
