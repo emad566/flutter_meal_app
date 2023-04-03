@@ -25,7 +25,7 @@ class _CategoryMealScreenState extends State<CategoryMealScreen> {
   @override
   void initState() {
     super.initState();
-    widget.meals = DUMMY_MEALS.where((Meal meal) => meal.categories.contains(widget.catItem.id)).toList();
+    widget.meals = dummyMeals.where((Meal meal) => meal.categories.contains(widget.catItem.id)).toList();
   }
 
   void removeItem(Meal meal){

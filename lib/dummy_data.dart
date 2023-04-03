@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './models/category.dart';
 import './models/meal.dart';
 
-final DUMMY_CATEGORIES = [
+final dummyCategories = [
   CategoryModel(
     id: 'c1',
     title: 'Italian',
@@ -56,7 +56,7 @@ final DUMMY_CATEGORIES = [
   ),
 ];
 
-final DUMMY_MEALS = [
+final dummyMeals = [
   Meal(
     id: 'm1',
     categories: [

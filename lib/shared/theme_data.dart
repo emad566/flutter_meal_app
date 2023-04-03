@@ -5,7 +5,7 @@ ThemeData lightTheme = ThemeData(
   canvasColor: Colors.white,
   textTheme: ThemeData.light().textTheme.copyWith(
     bodySmall: const TextStyle(
-      color: Color.fromRGBO(255, 254, 229, 1),
+      color: Color.fromRGBO(10, 0, 10, 1),
       fontFamily: 'RobotoCondensed',
     ),
     bodyMedium: const TextStyle(
