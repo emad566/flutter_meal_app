@@ -6,7 +6,8 @@ import 'package:flutter_meal_app/shared/components.dart';
 // ignore: must_be_immutable
 class MealItem extends StatelessWidget {
   Meal item;
-  MealItem({Key key, @required this.item}) : super(key: key);
+  final Function removeItem;
+  MealItem({Key key, @required this.item, @required this.removeItem}) : super(key: key);
 
   String get complexityText{
     switch(item.complexity){
@@ -33,7 +34,15 @@ class MealItem extends StatelessWidget {
 
     return InkWell(
       onTap: (){
-        navigateTo(context, MealDetailsScreen(item: item));
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) {
+            return MealDetailsScreen(item: item);
+          }),
+        ).then((value){
+          if(value == null) return;
+          removeItem(value);
+        });
+
       },
       child: Card(
         shape: RoundedRectangleBorder(

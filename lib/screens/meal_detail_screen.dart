@@ -15,6 +15,12 @@ class MealDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: myText(item.title),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.delete),
+        onPressed: (){
+          Navigator.of(context).pop(item);
+        },
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
