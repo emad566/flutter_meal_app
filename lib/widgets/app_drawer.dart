@@ -52,7 +52,7 @@ class AppDrawer extends StatelessWidget {
       title: myText(title),
       onTap: () {
         if (screen == null) return;
-        navigateTo(context, screen);
+        navigateReplaceTo(context, screen);
       },
       trailing: const Icon(Icons.next_plan),
     );
